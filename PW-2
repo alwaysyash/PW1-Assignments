@@ -1,0 +1,172 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class user
+{
+  public:
+  string email,password;
+  int user_id;
+  
+  void authrize()
+  {
+      cout<<"Enter email";
+      cin>>email;
+      
+      cout<<"Enter password";
+      cin>>password;
+      
+      if(email=="" || password=="")
+      {
+          cout<<"Email and Password is mandatory."<<endl ;
+      }
+      else
+      {
+          cout<<"\nSuccessfull"<<endl;
+      }
+      
+  }
+ 
+};
+
+
+class kanban_board
+{
+    public:
+    
+    int kanban_id,admin_id;
+    string description;
+    
+    void deletek()
+    {   int temp;
+        cout<<"Enter kanban_id to delete:";
+        cin>>temp;
+        
+        if(temp>0)
+        {
+            cout<<"Kanban deleted."<<endl;
+        }
+        else
+        {
+            cout<<"Kanban does not exist."<<endl;
+        }
+    }
+};
+
+class card_status
+{   public:
+    bool on_hold,in_progress,to_do,done,backlog;
+    
+    card_status()
+    {
+       on_hold=false;
+       in_progress=false;
+       to_do=false;
+       done=false;
+       backlog=false;
+       
+    }
+};
+
+
+class cards
+{
+    public:
+    int card_id, date, creaer_id;
+    string description;
+    
+    
+    
+    void create()
+    {
+        cout<<"Enter date";
+        cin>>date;
+        
+        cout<<"Enter description";
+        getline (cin,description);
+    }
+    
+    void deletec()
+    {   int temp;
+        cout<<"Enter card_id to delete:";
+        cin>>temp;
+        
+        if(temp>0)
+        {
+            cout<<"Card deleted."<<endl;
+        }
+        else
+        {
+            cout<<"Card does not exist."<<endl;
+        }
+    }
+    
+    void edit()
+    
+    {
+        int temp;
+        
+        cout<<"Enter card id to delete";
+        cin>>temp;
+        
+        cout<<"Enter date";
+        cin>>date;
+        
+        cout<<"Enter description";
+        getline (cin,description);
+        
+    }
+    
+    void change_status()
+    {   int choice;
+        card_status cs;
+        
+        cout<<"Enter 1.On hold 2.In Progress 3.To Do 4.Done 5.Backlog"<<endl;
+        cin>>choice;
+
+        switch(choice)
+        {
+            case 1:
+            cs.on_hold=true;
+            break;
+            
+            case 2:
+            cs.in_progress=true;
+            break;
+            
+            case 3:
+            cs.to_do=true;
+            break;
+            
+            case 4:
+            cs.done=true;
+            break;
+            
+            case 5:
+            cs.backlog=true;
+            break;
+            
+        }
+        
+        
+    }
+};
+
+
+
+int main()
+{
+    user u;
+    u.authrize();
+    
+    kanban_board kb;
+    kb.deletek();
+    
+    cards c;
+    c.create();
+    c.deletec();
+    c.edit();
+    c.change_status();
+    
+
+    return 0;
+}
